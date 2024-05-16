@@ -1,7 +1,7 @@
-import { Student } from "../Models/student";
+import { Student } from "../../Models/student";
 
 export interface StudentsStateInterface {
     isLoading: boolean,
     students: Student[],
-    error: string
+    error: string|null
 }
