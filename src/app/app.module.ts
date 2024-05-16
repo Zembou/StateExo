@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StudentService } from './services/student/student.service';
+import { StudentModuleModule } from './student-module/student-module.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentModuleModule
   ],
   imports: [
     BrowserModule,
