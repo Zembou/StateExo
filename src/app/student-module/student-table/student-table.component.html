@@ -1,1 +1,13 @@
 <p *ngIf="loading$ | async">Loading...</p>
+<table>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom de famille</th>
+      <th>Date de naissance</th>
+    </tr>
+    <tr *ngFor="let student of students$ | async">
+      <td>{{student.firstName}}</td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.birthDate}}</td>
+    </tr>
+</table>

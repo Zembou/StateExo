@@ -7,6 +7,7 @@ import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StudentService } from './services/student/student.service';
 import { StudentModuleModule } from './student-module/student-module.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StudentModuleModule } from './student-module/student-module.module';
     HttpClientModule,
     StudentModuleModule,
     StoreModule.forRoot(),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
