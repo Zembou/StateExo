@@ -11,12 +11,12 @@ import { StudentModuleModule } from './student-module/student-module.module';
 @NgModule({
   declarations: [
     AppComponent,
-    StudentModuleModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    StudentModuleModule,
     StoreModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

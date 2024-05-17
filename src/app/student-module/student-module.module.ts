@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentTableComponent } from './student-table/student-table.component';
+import { StudentService } from '../services/student/student.service';
 
 
 
@@ -10,6 +11,9 @@ import { StudentTableComponent } from './student-table/student-table.component';
   ],
   imports: [
     CommonModule
+  ],
+  providers:[
+    StudentService
   ]
 })
 export class StudentModuleModule { }
