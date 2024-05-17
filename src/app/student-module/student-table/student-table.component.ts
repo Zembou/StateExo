@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, StoreModule, select } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as StudentActions from '../../store/student/students.action';
 import { StudentsSelector, isErrorSelector, isLoadingSelector } from 'src/app/store/student/students.selectors';
 import { AppStateInterface } from 'src/app/types/appState.interface';
 import { Observable } from 'rxjs';
 import { Student } from 'src/app/Models/student';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-student-table',
   templateUrl: './student-table.component.html',
-  styleUrls: ['./student-table.component.css']
+  styleUrls: ['./student-table.component.css'],
 })
 export class StudentTableComponent implements OnInit{
   loading$: Observable<boolean>|undefined;
   students$: Observable<Student[]>|undefined;
   error$: Observable<string|null>|undefined;
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate'];
+  dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>
   constructor(private store: Store<AppStateInterface>)
   {
     this.Initialization();
@@ -22,6 +25,7 @@ export class StudentTableComponent implements OnInit{
   
   ngOnInit(): void {
     this.store.dispatch(StudentActions.gettingStudents());
+    this.students$?.subscribe((response)=> this.dataSource.data = response)
   }
 
   private Initialization(){

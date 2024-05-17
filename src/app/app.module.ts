@@ -8,6 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StudentService } from './services/student/student.service';
 import { StudentModuleModule } from './student-module/student-module.module';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EffectsModule } from '@ngrx/effects';
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode
     }),
+    BrowserAnimationsModule,
   ],
   providers: [
     StudentService,

@@ -6,6 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { studentReducer } from '../store/student/students.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StudentsEffect } from '../store/student/students.effect';
+import { MatHeaderRowDef, MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -15,10 +16,12 @@ import { StudentsEffect } from '../store/student/students.effect';
   imports: [
     CommonModule,
     StoreModule.forFeature('students', studentReducer),
-    EffectsModule.forFeature([StudentsEffect])
+    EffectsModule.forFeature([StudentsEffect]),
+    MatTableModule
   ],
   providers:[
-    StudentService
+    StudentService,
+    MatTableDataSource
   ]
 })
 export class StudentModuleModule { }
