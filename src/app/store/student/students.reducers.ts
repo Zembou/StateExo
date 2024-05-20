@@ -13,5 +13,21 @@ export const studentReducer = createReducer(
     on(
         StudentsAction.gettingStudents,
         state => ({...state, isLoading:true})
+    ),
+    on(
+        StudentsAction.gotStudentsSuccess,
+        (state, action) => 
+            ({...state, 
+                isLoading:false, 
+                students:action.students
+            })
+    ),    
+    on(
+        StudentsAction.gotStudentsFailure,
+        (state, action) => 
+            ({...state, 
+                isLoading:false, 
+                error:action.error
+            })
     )
 )
