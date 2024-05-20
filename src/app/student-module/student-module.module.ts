@@ -7,17 +7,21 @@ import { studentReducer } from '../store/student/students.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StudentsEffect } from '../store/student/students.effect';
 import { MatHeaderRowDef, MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    StudentTableComponent
+    StudentTableComponent,
+    AddStudentComponent
   ],
   imports: [
     CommonModule,
     StoreModule.forFeature('students', studentReducer),
     EffectsModule.forFeature([StudentsEffect]),
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule
   ],
   providers:[
     StudentService,

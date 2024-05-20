@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import * as StudentActions from '../../store/student/students.action';
 import { StudentsSelector, isErrorSelector, isLoadingSelector } from 'src/app/store/student/students.selectors';
 import { AppStateInterface } from 'src/app/types/appState.interface';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Student } from 'src/app/Models/student';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -25,7 +25,8 @@ export class StudentTableComponent implements OnInit{
   
   ngOnInit(): void {
     this.store.dispatch(StudentActions.gettingStudents());
-    this.students$?.subscribe((response)=> this.dataSource.data = response)
+    this.students$?.subscribe((response)=> {console.log(response);this.dataSource.data = response});
+    console.log("on init");
   }
 
   private Initialization(){

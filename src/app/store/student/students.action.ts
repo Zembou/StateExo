@@ -10,3 +10,17 @@ export const gotStudentsFailure = createAction(
     '[Students] Failed Getting Students',
     props<{error: string}>()
 );
+
+export const postingStudents = createAction(
+    '[Students] Posting Students',
+    props<{students: Student}>()
+
+);
+export const postSuccess = createAction(
+    '[Students] Successfully Post Students',
+    props<{student: Student}>()
+);
+export const postFailure = createAction(
+    '[Students] Failed Post Students',
+    props<{error: string}>()
+);
