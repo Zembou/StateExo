@@ -13,7 +13,7 @@ export const gotStudentsFailure = createAction(
 
 export const postingStudents = createAction(
     '[Students] Posting Students',
-    props<{students: Student}>()
+    props<{student: Student}>()
 
 );
 export const postSuccess = createAction(

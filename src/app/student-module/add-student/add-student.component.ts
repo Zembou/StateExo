@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as StudentActions from '../../store/student/students.action';
 import { Router } from '@angular/router';
+import { Student } from 'src/app/Models/student';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class AddStudentComponent {
   });
 
   onSubmit(){
-    this.store.dispatch(StudentActions.postingStudents(this.studentForm.value)),
+    const student:Student = this.studentForm.value;
+    if(!student.id) student.id=0
+    this.store.dispatch(StudentActions.postingStudents({student:student})),
     this.router.navigate(['']);
   }
 
