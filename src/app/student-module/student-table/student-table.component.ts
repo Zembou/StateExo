@@ -43,4 +43,8 @@ export class StudentTableComponent implements OnInit{
     this.router.navigate(['Edit',id])
   }
 
+  delete(id:number){
+    this.store.dispatch(StudentActions.deletingStudents({id}));
+  }
+
 }

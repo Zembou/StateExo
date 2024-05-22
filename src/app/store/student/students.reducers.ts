@@ -69,5 +69,31 @@ export const studentReducer = createReducer(
     on(
         StudentsAction.updateFailure,
         (state,action)=> ({...state,isLoading:false,error:action.error})
-    )
+    ),
+    // DELETE -----------------------
+    on(
+        StudentsAction.deletingStudents,
+        (state) => ({...state,isLoading:true})
+    ),
+    on(
+        StudentsAction.deleteSuccess,
+        (state,action) => {
+            var newStudents = [...state.students];
+            var newState:StudentsStateInterface = {...state};
+            const deletedStudent = newStudents.findIndex(stud => stud.id == action.student.id);
+            
+            if(!isNaN(deletedStudent)) {
+                newStudents.splice(deletedStudent, 1);
+            }
+            newState.students = [...newStudents];
+            newState.isLoading=false;
+            newState.error=null;
+            return newState;
+        }
+    ),
+    on(
+        StudentsAction.deleteFailure,
+        (state,action)=> ({...state,isLoading:false,error:action.error})
+    ),
+
 )
