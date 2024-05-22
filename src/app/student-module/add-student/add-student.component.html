@@ -9,6 +9,6 @@
     <label for="birthDate">Date de naissance: </label>
     <input id="birthDate" type="date" formControlName="birthDate">
     
-    <input id="submit" type="submit" value="Valider">
+    <input id="submit" type="submit" value="Valider" [disabled]="loading$ | async">
     
 </form>

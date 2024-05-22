@@ -20,7 +20,8 @@ export const studentReducer = createReducer(
         (state, action) => 
             ({...state, 
                 isLoading:false, 
-                students:action.students
+                students:action.students,
+                error:null
             })
     ),    
     on(
@@ -37,6 +38,9 @@ export const studentReducer = createReducer(
     ),
     on(
         StudentsAction.postSuccess,
-        (state,action) => ({...state, isLoading:false, students:state.students.concat(action.student)})
+        (state,action) => ({...state, isLoading:false, students:state.students.concat(action.student),error:null})
+    ),
+    on(StudentsAction.postFailure,
+        (state,action) => ({...state, isLoading:false, error:action.error})
     )
 )
