@@ -18,7 +18,19 @@ export class StudentsEffect {
                     );
             })
         )
-    )
+    );
+
+    postStudent$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(StudentsAction.postingStudents),
+            mergeMap((value) => {
+                return this.studentService.createStudent(value.student).pipe(
+                    map((student) => StudentsAction.postSuccess({student:student as Student})),
+                    catchError((error) => of(StudentsAction.postFailure({error:error})))
+                );
+            })
+        )
+    );
 
     constructor(private actions$: Actions, private studentService: StudentService){}
 }

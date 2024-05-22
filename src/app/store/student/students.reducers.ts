@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { StudentsStateInterface } from "./students.state";
 import * as StudentsAction from "./students.action"
+import { state } from "@angular/animations";
 
 export const initialState: StudentsStateInterface = {
     isLoading:false,
@@ -19,7 +20,8 @@ export const studentReducer = createReducer(
         (state, action) => 
             ({...state, 
                 isLoading:false, 
-                students:action.students
+                students:action.students,
+                error:null
             })
     ),    
     on(
@@ -29,5 +31,16 @@ export const studentReducer = createReducer(
                 isLoading:false, 
                 error:action.error
             })
+    ),
+    on(
+        StudentsAction.postingStudents,
+        state => ({...state, isLoading:true})
+    ),
+    on(
+        StudentsAction.postSuccess,
+        (state,action) => ({...state, isLoading:false, students:state.students.concat(action.student),error:null})
+    ),
+    on(StudentsAction.postFailure,
+        (state,action) => ({...state, isLoading:false, error:action.error})
     )
 )

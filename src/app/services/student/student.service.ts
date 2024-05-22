@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Student } from 'src/app/Models/student';
 
 const LINK_API: string = 'https://localhost:7047/api/Etudiants'
-
+const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,8 @@ export class StudentService {
   }
 
   public createStudent(student: Student){
-    return this.httpClient.post(LINK_API, student);
+
+    return this.httpClient.post(LINK_API, student,{headers:headers});
   }
 
   public deleteStudent(id: number){

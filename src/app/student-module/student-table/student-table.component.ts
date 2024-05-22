@@ -3,9 +3,10 @@ import { Store, select } from '@ngrx/store';
 import * as StudentActions from '../../store/student/students.action';
 import { StudentsSelector, isErrorSelector, isLoadingSelector } from 'src/app/store/student/students.selectors';
 import { AppStateInterface } from 'src/app/types/appState.interface';
-import { Observable } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Student } from 'src/app/Models/student';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-table',
@@ -18,20 +19,24 @@ export class StudentTableComponent implements OnInit{
   error$: Observable<string|null>|undefined;
   displayedColumns: string[] = ['firstName', 'lastName', 'birthDate'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>
-  constructor(private store: Store<AppStateInterface>)
+  constructor(private store: Store<AppStateInterface>,private router:Router)
   {
     this.Initialization();
   }
   
   ngOnInit(): void {
     this.store.dispatch(StudentActions.gettingStudents());
-    this.students$?.subscribe((response)=> this.dataSource.data = response)
+    this.students$?.subscribe((response)=> {this.dataSource.data = response});
   }
 
   private Initialization(){
     this.loading$ = this.store.pipe(select(isLoadingSelector));
     this.students$ = this.store.pipe(select(StudentsSelector));
     this.error$ = this.store.pipe(select(isErrorSelector));
+  }
+
+  onClick(){
+    this.router.navigate(['Add']);
   }
 
 }

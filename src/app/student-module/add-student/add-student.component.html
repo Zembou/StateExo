@@ -1,0 +1,14 @@
+<form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <input id="id" type="hidden" formControlName="id">
+    <label for="firstName">Prénom: </label>
+    <input id="firstName" type="text" formControlName="firstName">
+
+    <label for="lastName">Nom de famille: </label>
+    <input id="lastName" type="text" formControlName="lastName">
+
+    <label for="birthDate">Date de naissance: </label>
+    <input id="birthDate" type="date" formControlName="birthDate">
+    
+    <input id="submit" type="submit" value="Valider" [disabled]="loading$ | async">
+    
+</form>

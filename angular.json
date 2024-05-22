@@ -25,7 +25,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/theme/styles.scss",
               "src/styles.css"
             ],
             "scripts": []
