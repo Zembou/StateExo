@@ -41,3 +41,18 @@ export const updateFailure = createAction(
     '[Students] Failed Update Students',
     props<{error: string}>()
 );
+
+// DELETE ----------------------------
+export const deletingStudents = createAction(
+    '[Students] Deleting Students',
+    props<{id: number}>()
+
+);
+export const deleteSuccess = createAction(
+    '[Students] Successfully Delete Students',
+    props<{student: Student}>()
+);
+export const deleteFailure = createAction(
+    '[Students] Failed Delete Students',
+    props<{error: string}>()
+);
