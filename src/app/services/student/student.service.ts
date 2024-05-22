@@ -28,7 +28,7 @@ export class StudentService {
   }
 
   public updateStudent(student: Student){
-    return this.httpClient.put(LINK_API,'student');
+    return this.httpClient.put(LINK_API,student,{headers:headers});
   }
 
 }

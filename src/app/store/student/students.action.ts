@@ -26,3 +26,18 @@ export const postFailure = createAction(
     '[Students] Failed Post Students',
     props<{error: string}>()
 );
+
+// PUT ----------------------------
+export const updatingStudents = createAction(
+    '[Students] Updating Students',
+    props<{student: Student}>()
+
+);
+export const updateSuccess = createAction(
+    '[Students] Successfully Update Students',
+    props<{student: Student}>()
+);
+export const updateFailure = createAction(
+    '[Students] Failed Update Students',
+    props<{error: string}>()
+);

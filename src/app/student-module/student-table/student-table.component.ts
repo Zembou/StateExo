@@ -6,7 +6,7 @@ import { AppStateInterface } from 'src/app/types/appState.interface';
 import { Observable, map, tap } from 'rxjs';
 import { Student } from 'src/app/Models/student';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-student-table',
@@ -17,7 +17,7 @@ export class StudentTableComponent implements OnInit{
   loading$: Observable<boolean>|undefined;
   students$: Observable<Student[]>|undefined;
   error$: Observable<string|null>|undefined;
-  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'birthDate','action'];
   dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>
   constructor(private store: Store<AppStateInterface>,private router:Router)
   {
@@ -37,6 +37,10 @@ export class StudentTableComponent implements OnInit{
 
   onClick(){
     this.router.navigate(['Add']);
+  }
+
+  toEdit(id:number){
+    this.router.navigate(['Edit',id])
   }
 
 }
