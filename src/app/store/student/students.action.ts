@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 import { Student } from "src/app/Models/student";
 
+// GET ----------------------------
 export const gettingStudents = createAction('[Students] Getting Students');
 export const gotStudentsSuccess = createAction(
     '[Students] Successfully Getting Students',
@@ -11,6 +12,7 @@ export const gotStudentsFailure = createAction(
     props<{error: string}>()
 );
 
+// POST ----------------------------
 export const postingStudents = createAction(
     '[Students] Posting Students',
     props<{student: Student}>()

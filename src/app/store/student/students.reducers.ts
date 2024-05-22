@@ -11,6 +11,7 @@ export const initialState: StudentsStateInterface = {
 
 export const studentReducer = createReducer(
     initialState,
+    // GET -------------------
     on(
         StudentsAction.gettingStudents,
         state => ({...state, isLoading:true})
@@ -32,6 +33,7 @@ export const studentReducer = createReducer(
                 error:action.error
             })
     ),
+    // POST ------------------
     on(
         StudentsAction.postingStudents,
         state => ({...state, isLoading:true})
@@ -40,7 +42,8 @@ export const studentReducer = createReducer(
         StudentsAction.postSuccess,
         (state,action) => ({...state, isLoading:false, students:state.students.concat(action.student),error:null})
     ),
-    on(StudentsAction.postFailure,
+    on(
+        StudentsAction.postFailure,
         (state,action) => ({...state, isLoading:false, error:action.error})
     )
 )
