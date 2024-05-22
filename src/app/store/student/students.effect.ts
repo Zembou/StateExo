@@ -44,5 +44,17 @@ export class StudentsEffect {
         )
     );
 
+    deleteStudent$ = createEffect(()=>
+        this.actions$.pipe(
+            ofType(StudentsAction.deletingStudents),
+            mergeMap((value)=>{
+                return this.studentService.deleteStudent(value.id).pipe(
+                    map((student)=> StudentsAction.deleteSuccess({student:student as Student})),
+                    catchError((error) => of(StudentsAction.deleteFailure({error:error})))
+                );
+            })
+        )
+    )
+
     constructor(private actions$: Actions, private studentService: StudentService){}
 }
