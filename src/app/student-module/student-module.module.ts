@@ -10,12 +10,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { UpdateStudentComponent } from './update-student/update-student.component';
 
 
 @NgModule({
   declarations: [
     StudentTableComponent,
-    AddStudentComponent
+    AddStudentComponent,
+    UpdateStudentComponent
   ],
   imports: [
     CommonModule,

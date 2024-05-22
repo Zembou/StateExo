@@ -39,9 +39,9 @@ export class AddStudentComponent implements OnInit{
     this.store.dispatch(StudentActions.postingStudents({student:student}));
   }
 
-  constructor(private store: Store<AppStateInterface>, private router: Router){}
+  constructor(protected store: Store<AppStateInterface>, protected router: Router){}
 
-  private Initialization(){
+  protected Initialization(){
     this.loading$ = this.store.pipe(select(isLoadingSelector));
     this.loading$.subscribe(res => {
       this.loading= res; 

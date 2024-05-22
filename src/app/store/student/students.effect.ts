@@ -32,5 +32,17 @@ export class StudentsEffect {
         )
     );
 
+    updateStudent$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(StudentsAction.updatingStudents),
+            mergeMap((value) => {
+                return this.studentService.updateStudent(value.student).pipe(
+                    map((student) => StudentsAction.updateSuccess({student:student as Student})),
+                    catchError((error) => of(StudentsAction.updateFailure({error:error})))
+                );
+            })
+        )
+    );
+
     constructor(private actions$: Actions, private studentService: StudentService){}
 }
