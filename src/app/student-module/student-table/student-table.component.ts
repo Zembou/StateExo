@@ -27,6 +27,8 @@ export class StudentTableComponent implements OnInit{
   ngOnInit(): void {
     this.store.dispatch(StudentActions.gettingStudents());
     this.students$?.subscribe((response)=> {this.dataSource.data = response});
+    var date = new Date();
+    date.setDate(date.getDate()+7)
   }
 
   private Initialization(){
