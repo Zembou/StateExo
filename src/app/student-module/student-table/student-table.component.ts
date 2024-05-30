@@ -40,7 +40,7 @@ export class StudentTableComponent implements OnInit{
   }
 
   toEdit(id:number){
-    this.router.navigate(['Edit',id])
+    this.router.navigate(['Edit',id]);
   }
 
   delete(id:number){
